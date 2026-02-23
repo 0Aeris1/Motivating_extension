@@ -10,7 +10,7 @@ async function runMotivation() {
     inputEl.value = "";
 
     try {
-            const response = await fetch("https://motivating-extension.onrender.com", {
+            const response = await fetch("https://motivating-extension.onrender.com/motivate", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ text: input })
