@@ -15,11 +15,19 @@ async function runMotivation() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ text: input })
         });
-
+ 
             const data = await response.json();
 
-            // AI Output
-            typeWriter(outputEl, data.response + "\n\n" + getAsciiArt(), 80);
+        if (response.ok) {
+            // Normal AI Output
+            msg = data.response
+
+        } else {
+            // rate-limit or other errors
+            msg = data.detail || "AI died from an uknown error";
+
+        }
+            typeWriter(outputEl, msg + "\n\n" + getAsciiArt(), 80); 
 
         } catch (err) {
 
