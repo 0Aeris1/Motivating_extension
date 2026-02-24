@@ -1,4 +1,6 @@
-from fastapi import FastAPI, HTTPException, Request, Header
+import os
+
+from fastapi import FastAPI, HTTPException, Request, Header, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from slowapi import Limiter
