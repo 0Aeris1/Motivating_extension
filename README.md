@@ -47,14 +47,14 @@ If desired, one can host Spark locally using your own OpenAI API key.
 
 1. Install dependencies
 
-```sh
+```bash
 pip install -r requirements.txt
 
 ```
 
 2. Set your OpenAI API key
 
-```sh
+```bash
 export OPENAI_API_KEY="your key here"
 
 ```
@@ -70,7 +70,7 @@ http://127.0.0.1:8000
 4. Start the backend
 Make sure to run this from the project root:
 
-```sh
+```bash
 uvicorn backend.engine.app:app --reload
 
 ```
@@ -78,7 +78,7 @@ Spark will now use your local backend and API key.
 
 You can optionally change or remove rate limiting completely, to do so modify app.py:
 
-```py
+```python
 @limiter.limit("5/day") #Adjust as needed
 
 ```
