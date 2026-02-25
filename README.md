@@ -59,16 +59,14 @@ export OPENAI_API_KEY="your key here"
 
 ```
 
-3. Update the extension backend URL
-In popup.js, change the backend URL to:
+3. Update the extension backend URL to:
 
 ```js
 http://127.0.0.1:8000
 
 ```
 
-4. Start the backend
-Make sure to run this from the project root:
+4. Start the backend from the project root:
 
 ```bash
 uvicorn backend.engine.app:app --reload
