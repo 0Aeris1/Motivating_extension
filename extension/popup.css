@@ -1,22 +1,24 @@
 :root {
+  /* Terminal-style monospace stack for output */
   --terminal-font: ui-monospace, SFMono-Regular, Menlo, Monaco,
                    Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 
-/* Reset & fonts */
+/* Global reset */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* Chrome extension popup constraints */
 html, body {
-  width: 320px;          /* smaller popup */
+  width: 320px;          
   min-width: 320px;
   max-width: 100%;
-  background: #000;       /* true black */
-  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif; /* playful */
+  background: #000;      
+  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif; /* playful contrast*/
 }
 
 #app {
@@ -25,31 +27,31 @@ html, body {
   height: 100%;
   padding: 12px;
   gap: 12px;
-  border-radius: 24px;    /* super round */
+  border-radius: 24px;   
   background: #000;
 }
 
-/* Output: top, auto-expand */
+/* Main output area (terminal-inspired) */
 #output {
   flex: 1;
   padding: 14px;
   font-size: 16px;
   line-height: 1.4;
-  color: #ffffff;             /* comic bright white */
-  border-radius: 20px;     /* round edges */
+  color: #ffffff;   
+  border-radius: 20px;     
   background: #111;        /* slightly lighter black for contrast */
   overflow-y: auto;
   text-align: center;  
   font-family: var(--terminal-font);
-  font-weight: 700;          /* bold */
-  letter-spacing: 0.02em;    /* terminal feel */
+  font-weight: 700;       
+  letter-spacing: 0.02em;
   text-shadow: 0 0 6px rgba(255, 255, 255, 0.12);
   white-space: pre-wrap;
 
 
 }
 
-/* Input bar at bottom */
+/* Input area */
 #input-bar {
   display: flex;
   gap: 8px;
@@ -82,7 +84,7 @@ html, body {
   transform: scale(0.95);
 }
 
-/* Scrollbar styling (subtle) */
+/* Subtle scrollbar styling */
 #output::-webkit-scrollbar {
   width: 6px;
 }
@@ -94,11 +96,13 @@ html, body {
 
 }
 
+/* Small entrance animation */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-5px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Prevent popup from collapsing or growing too tall */
 html, body, #app {
   min-height: 150px;
   max-height: 600px;

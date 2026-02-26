@@ -3,13 +3,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const inputEl = document.getElementById("input");
     const outputEl = document.getElementById("output");
 
+// Function to call backend and display AI motivational message
 async function runMotivation() {
-    const input = inputEl.value || "";
-
-    // Clear input immediately
-    inputEl.value = "";
+    const input = inputEl.value || ""; // Use input or default
+    inputEl.value = ""; // Clear input immediately
 
     try {
+            // Send request to backend API (change this for local hosting)
             const response = await fetch("https://motivating-extension.onrender.com/motivate", {
             method: "POST",
             headers: { "Content-Type": "application/json"},
@@ -19,32 +19,27 @@ async function runMotivation() {
             const data = await response.json();
 
         if (response.ok) {
-            // Normal AI Output
-            msg = data.response
-
+            msg = data.response // Normal AI output
         } else {
-            // rate-limit or other errors
-            msg = data.detail || "AI died from an uknown error";
-
+            msg = data.detail || "AI died from an uknown error"; // Rate-limit or other errors
         }
+            // Display message with typing effect + ASCII art
             typeWriter(outputEl, msg + "\n\n" + getAsciiArt(), 80); 
 
         } catch (err) {
-
             typeWriter(outputEl, "Engine offline.\n" + err, 80);
 
         }
     }
-    // Attach handler
-    go.addEventListener("click", runMotivation);
 
-    // Auto-run once on open
-    runMotivation();
+    go.addEventListener("click", runMotivation); // Attach click handler
+    runMotivation(); // Auto-run once on extension open
 
 });
 
+// Typewriter effect: prints words one by one
 function typeWriter(element, text, delay = 80) {
-    element.textContent = ""; // clear existing
+    element.textContent = ""; // Clear existing content
     const words = text.split(" ");
     let i = 0;
 
@@ -56,6 +51,7 @@ function typeWriter(element, text, delay = 80) {
 
 }
 
+// Random motivational ASCII art
 function getAsciiArt() {
     const arts = [
     `  (ง'̀-'́)ง
